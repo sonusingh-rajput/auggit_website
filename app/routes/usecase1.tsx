@@ -1,8 +1,13 @@
-import { motion } from "framer-motion";
-import { Link } from "react-router";
-import { useState } from "react";
-import { FiArrowRight, FiChevronLeft, FiChevronRight, FiCheckCircle } from "react-icons/fi";
+import { useState, useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { Link } from "react-router"; 
+import {
+  FiArrowRight,
+  FiChevronLeft,
+  FiChevronRight,
+} from "react-icons/fi";
 
+// Local data – can also be imported from a separate file
 export const useCasesData = [
   {
     slug: "sap-data-slicing-section-128",
@@ -16,8 +21,8 @@ export const useCasesData = [
       "Eliminate expensive and risky full-system database clones, slashing storage infrastructure costs by up to 70% while completely removing the operational headaches of managing duplicate environments.",
       "Enable live, real-time queries against sliced datasets for active statutory inspectors, allowing them to validate records on the spot without waiting for weeks of preparatory data dumps.",
       "Enforce strict data sovereignty by ensuring all extraction and archiving execution stays contained within regional on-premise or private cloud servers — never touching offshore infrastructure.",
-      "Configure fully automated extraction schedules that trigger based on audit calendars, fiscal year-ends, or ad-hoc regulatory requests, reducing manual IT intervention to near zero."
-    ]
+      "Configure fully automated extraction schedules that trigger based on audit calendars, fiscal year-ends, or ad-hoc regulatory requests, reducing manual IT intervention to near zero.",
+    ],
   },
   {
     slug: "automated-invoice-processing-edms",
@@ -31,8 +36,8 @@ export const useCasesData = [
       "Achieve sub-300 millisecond record retrieval speeds, reducing the average document lookup from 15 minutes of frantic searching to a simple 2-second keyword query, dramatically improving finance team productivity.",
       "Automate invoice ingestion with intelligent OCR that extracts, validates, and indexes 95%+ of data fields with zero human intervention, slashing data entry errors and duplicate payment risks.",
       "Establish direct, immutable ERP ledger linking that automatically attaches every digital invoice to its corresponding journal voucher, creating a fully synchronized, auditor-friendly financial vault.",
-      "Eliminate lost invoice disputes entirely — every vendor claim can now be verified instantly, preventing costly duplicate payments, late fees, and preserving hard-earned supplier trust."
-    ]
+      "Eliminate lost invoice disputes entirely — every vendor claim can now be verified instantly, preventing costly duplicate payments, late fees, and preserving hard-earned supplier trust.",
+    ],
   },
   {
     slug: "cross-departmental-digital-audits",
@@ -46,8 +51,8 @@ export const useCasesData = [
       "Provide secure, read-only guest portals for external auditors, giving them 24/7 self-service access to verifiable documents while completely eliminating the need for internal staff to chaperone every review session.",
       "Enforce cryptographic version-locking on every file, ensuring absolute tamper-proof integrity — auditors can independently verify that documents haven't been altered since their creation, building unshakeable trust.",
       "Generate instant compliance export packages with a single click, aggregating documents by year, category, or audit scope, and delivering them in fully structured, inspector-ready formats within minutes.",
-      "Erase lost document liability entirely — with a centralized, immutable, and fully indexed repository, missing files become a thing of the past, and audit findings related to documentation drop to zero."
-    ]
+      "Erase lost document liability entirely — with a centralized, immutable, and fully indexed repository, missing files become a thing of the past, and audit findings related to documentation drop to zero.",
+    ],
   },
   {
     slug: "s4hana-migration-data-carving",
@@ -61,8 +66,8 @@ export const useCasesData = [
       "Drastically shorten critical cutover windows from projected months down to just days or even a single long weekend, eliminating the business disruption and revenue loss associated with prolonged ERP downtime.",
       "Slash cloud storage provisioning costs by over 60% — since only active, high-value data needs to reside in the premium S/4HANA environment, while historical archives are stored on cost-effective, compliance-grade cold storage.",
       "Ensure a clean and lean operational cutover, where the new system starts with only verified, relevant active data — avoiding the performance drag and indexing headaches of bloated legacy baggage.",
-      "Preserve full historical query access — auditors and legal teams can still retrieve archived records instantly via the platform's secure portal, maintaining 100% compliance without compromising new system agility."
-    ]
+      "Preserve full historical query access — auditors and legal teams can still retrieve archived records instantly via the platform's secure portal, maintaining 100% compliance without compromising new system agility.",
+    ],
   },
   {
     slug: "multi-site-construction-blueprint-sync",
@@ -76,8 +81,8 @@ export const useCasesData = [
       "Enable offline-first mobile document synchronization that guarantees field engineers always have access to the latest approved blueprints and compliance specs, even in the most remote, low-connectivity construction zones.",
       "Streamline on-site safety sign-offs and quality inspections by allowing engineers to upload completed checklists, photo evidence, and digital signatures instantly — reducing administrative backlogs and accelerating project milestones.",
       "Prevent costly build errors and rework by automatically flagging outdated document versions and pushing real-time revision notifications directly to field devices, ensuring everyone builds from the correct source of truth.",
-      "Create a centralized project revision history that captures every document change, approval, and field upload — providing complete forensic visibility for internal reviews, client audits, and liability protection."
-    ]
+      "Create a centralized project revision history that captures every document change, approval, and field upload — providing complete forensic visibility for internal reviews, client audits, and liability protection.",
+    ],
   },
   {
     slug: "retail-store-lease-and-vendor-governance",
@@ -91,8 +96,8 @@ export const useCasesData = [
       "Receive automated, multi-stage deadline alerts for lease renewals, supplier contract expirations, and compliance permit updates — eliminating the human error and oversight that leads to costly late penalties and lost opportunities.",
       "Enforce granular role-based departmental access controls, ensuring that only authorized personnel can view or edit sensitive financial terms, while store managers retain operational visibility over their specific location agreements.",
       "Standardize regional supplier filings and documentation formats across the entire portfolio, enabling instant benchmarking of contract terms, pricing, and service levels across different branches and geographies.",
-      "Achieve complete audit visibility over operational spend and contractual liabilities, empowering the finance team to forecast accurately and identify cost-saving consolidation opportunities across the supplier base."
-    ]
+      "Achieve complete audit visibility over operational spend and contractual liabilities, empowering the finance team to forecast accurately and identify cost-saving consolidation opportunities across the supplier base.",
+    ],
   },
   {
     slug: "secure-healthcare-administrative-vault",
@@ -106,8 +111,8 @@ export const useCasesData = [
       "Maintain fully tamper-proof audit logs, where every document version, access, and modification is cryptographically sealed and timestamped — providing absolute non-repudiation for regulators and legal counsel.",
       "Receive automated missing-document anomaly alerts the moment the system detects a file pointer without a physical counterpart or any irregularity in the document chain, enabling rapid investigation and remediation.",
       "Enforce strict privacy boundary enforcement with fine-grained, attribute-based access controls that ensure only explicitly authorized clinical and administrative personnel can view or modify sensitive records.",
-      "Enable rapid regulatory reporting access by generating structured, verifiable document packages for ISO, HIPAA, or internal quality auditors in seconds — eliminating manual compilation effort and reducing audit fatigue."
-    ]
+      "Enable rapid regulatory reporting access by generating structured, verifiable document packages for ISO, HIPAA, or internal quality auditors in seconds — eliminating manual compilation effort and reducing audit fatigue.",
+    ],
   },
   {
     slug: "supply-chain-bill-of-lading-automation",
@@ -121,129 +126,224 @@ export const useCasesData = [
       "Enable instant loading dock digital indexing — simply scan a container barcode and the entire corresponding documentation packet is instantly retrieved, verified, and shared with relevant stakeholders without manual searching.",
       "Reduce border clearance friction by up to 65%, slashing average customs wait times from hours to under 60 minutes, directly improving asset utilization and customer delivery performance.",
       "Achieve complete paperless freight workflows, eliminating over 4 million sheets of paper annually for large providers, saving storage costs, reducing environmental footprint, and removing document misplacement risks entirely.",
-      "Provide live tracking of shipping receipts and proof-of-delivery signatures, giving shippers and consignees instant, auditable confirmation of cargo status from loading dock to final destination."
-    ]
-  }
+      "Provide live tracking of shipping receipts and proof-of-delivery signatures, giving shippers and consignees instant, auditable confirmation of cargo status from loading dock to final destination.",
+    ],
+  },
 ];
 
-export default function UseCasesPage() {
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 4; // Show 4 use cases per page
+// Type definition for the data items (optional but helpful)
+export interface UseCase {
+  slug: string;
+  title: string;
+  category: string;
+  impact: string;
+  image: string;
+  summary: string;
+  overview: string;
+  benefits: string[];
+}
 
-  const totalPages = Math.ceil(useCasesData.length / itemsPerPage);
+interface UseCasesPageProps {
+  useCasesData?: UseCase[]; // optional, defaults to local data
+}
+
+export default function UseCasesPage({ useCasesData: propData }: UseCasesPageProps) {
+  // Use local data as default if no prop is passed
+  const data = propData || useCasesData;
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 4;
+
+  const totalPages = Math.ceil(data.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = useCasesData.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const heroRef = useRef(null);
+  const isHeroInView = useInView(heroRef, { once: true, amount: 0.3 });
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-blue-50/40 to-white text-slate-900 py-20 px-6 lg:px-16 space-y-20">
-      
-      {/* Header Banner */}
-      <div className="max-w-4xl mx-auto text-center space-y-6 pt-6">
-        <span className="inline-flex items-center gap-2 px-4 py-1.5 text-xs font-semibold tracking-[0.25em] uppercase text-[#2997D0] bg-white rounded-full border border-blue-200 shadow-sm">
-          ⚙️ Strategic Use Cases
-        </span>
-        <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
-          Tailored Solutions for <span className="bg-gradient-to-r from-[#2997D0] to-indigo-600 bg-clip-text text-transparent">Complex Enterprise Needs</span>
-        </h1>
-        <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
-          Discover how organizations deploy Auggit’s intelligent document platforms and SAP integration engines to solve targeted operational friction.
-        </p>
-      </div>
-
-      {/* Use Cases Grid */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
-        {currentItems.map((item, index) => (
+    <div className="min-h-screen bg-[#F8FBFF] text-slate-800 overflow-x-hidden">
+      {/* ========== HERO SECTION ========== */}
+      <section ref={heroRef} className="relative px-6 pt-20 pb-12 sm:pt-28 sm:pb-16 max-w-7xl mx-auto">
+        {/* Animated background glow orbs */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <motion.div
-            key={item.slug}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.08 }}
-            whileHover={{ y: -5 }}
-            className="bg-white/95 backdrop-blur-2xl rounded-3xl overflow-hidden border border-blue-100 shadow-[0_20px_50px_rgba(41,151,208,0.1)] flex flex-col justify-between group"
-          >
-            <div className="relative aspect-[16/9] overflow-hidden bg-slate-100">
-              <img 
-                src={item.image} 
-                alt={item.title} 
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md text-white text-xs font-bold px-3.5 py-1 rounded-full border border-white/20">
-                {item.category}
-              </div>
-              <div className="absolute bottom-4 right-4 bg-[#2997D0] text-white text-xs font-extrabold px-3.5 py-1 rounded-full shadow-lg">
-                {item.impact}
-              </div>
-            </div>
-
-            <div className="p-8 flex flex-col justify-between flex-grow space-y-6">
-              <div className="space-y-3">
-                <h3 className="text-2xl font-bold text-slate-900 group-hover:text-[#2997D0] transition-colors leading-snug">
-                  {item.title}
-                </h3>
-                <p className="text-slate-600 text-sm leading-relaxed">
-                  {item.summary}
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                <span className="text-xs font-semibold text-slate-400">Enterprise Blueprint</span>
-                <Link
-                  to={`/usecase/${item.slug}`}
-                  className="inline-flex items-center gap-2 text-xs font-bold text-[#2997D0] group-hover:translate-x-1 transition-transform cursor-pointer"
-                >
-                  <span>Explore Use Case</span>
-                  <FiArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Pagination Controls Bar */}
-      {totalPages > 1 && (
-        <div className="flex items-center justify-center gap-2 pt-6">
-          <button
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-            className="p-3 rounded-xl bg-white border border-blue-200 text-slate-700 hover:bg-blue-50 disabled:opacity-40 disabled:hover:bg-white transition-all cursor-pointer shadow-sm"
-            aria-label="Previous Page"
-          >
-            <FiChevronLeft className="w-4 h-4" />
-          </button>
-
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map((number) => (
-            <button
-              key={number}
-              onClick={() => handlePageChange(number)}
-              className={`w-10 h-10 rounded-xl text-xs font-bold transition-all cursor-pointer shadow-sm ${
-                currentPage === number
-                  ? "bg-[#2997D0] text-white shadow-md shadow-blue-300/50"
-                  : "bg-white border border-blue-200 text-slate-700 hover:bg-blue-50"
-              }`}
-            >
-              {number}
-            </button>
-          ))}
-
-          <button
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className="p-3 rounded-xl bg-white border border-blue-200 text-slate-700 hover:bg-blue-50 disabled:opacity-40 disabled:hover:bg-white transition-all cursor-pointer shadow-sm"
-            aria-label="Next Page"
-          >
-            <FiChevronRight className="w-4 h-4" />
-          </button>
+            className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-[#E0F0FF] rounded-full blur-[100px] opacity-50"
+            animate={{ scale: [1, 1.05, 1] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute top-20 right-20 w-[300px] h-[300px] bg-[#D4EBFF] rounded-full blur-[80px] opacity-30"
+            animate={{ x: [0, -20, 0], y: [0, 15, 0] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          />
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="relative z-10 max-w-4xl mx-auto text-center space-y-6"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#E8F4FF] border border-[#B8DFFF] text-[#0077CC] text-xs font-bold uppercase tracking-[0.15em]">
+            <span className="relative flex w-2 h-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00A3FF] opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00A3FF]" />
+            </span>
+            Strategic Use Cases
+          </div>
+
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#0A1628] leading-[1.1]">
+            Tailored Solutions for{" "}
+            <span className="bg-gradient-to-r from-[#0077CC] via-[#0099FF] to-[#00B4D8] bg-clip-text text-transparent">
+              Complex Enterprise Needs
+            </span>
+          </h1>
+
+          <p className="text-slate-500 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
+            Discover how organizations deploy Auggit's intelligent document platforms and SAP integration engines to solve targeted operational friction.
+          </p>
+        </motion.div>
+      </section>
+
+      {/* ========== USE CASES GRID ========== */}
+      <section className="px-6 pb-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {currentItems.map((item, index) => (
+            <motion.div
+              key={item.slug}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
+              whileHover={{ y: -6 }}
+              className="group bg-white rounded-2xl overflow-hidden border border-[#E0F0FF] shadow-sm hover:shadow-xl hover:shadow-blue-100/40 transition-all duration-300 flex flex-col"
+            >
+              <div className="relative aspect-[16/9] overflow-hidden bg-slate-100">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute top-4 left-4 bg-[#0A1628]/90 backdrop-blur-md text-white text-xs font-bold px-3.5 py-1.5 rounded-full border border-white/10">
+                  {item.category}
+                </div>
+                <div className="absolute bottom-4 right-4 bg-gradient-to-r from-[#0077CC] to-[#00B4D8] text-white text-xs font-extrabold px-3.5 py-1.5 rounded-full shadow-lg">
+                  {item.impact}
+                </div>
+              </div>
+
+              <div className="p-7 flex flex-col flex-grow space-y-4">
+                <div className="space-y-2">
+                  <h3 className="text-xl font-bold text-[#0A1628] group-hover:text-[#0077CC] transition-colors leading-snug">
+                    {item.title}
+                  </h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">
+                    {item.summary}
+                  </p>
+                </div>
+
+                <div className="pt-4 border-t border-[#E8F4FF] flex items-center justify-between">
+                  <span className="text-xs font-semibold text-slate-400">Enterprise Blueprint</span>
+                  <Link
+                    to={`/usecase/${item.slug}`}
+                    className="inline-flex items-center gap-2 text-xs font-bold text-[#0077CC] group-hover:translate-x-1 transition-transform cursor-pointer"
+                  >
+                    <span>Explore Use Case</span>
+                    <FiArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* ========== PAGINATION ========== */}
+      {totalPages > 1 && (
+        <section className="px-6 py-8 max-w-7xl mx-auto">
+          <div className="flex items-center justify-center gap-2">
+            <button
+              type="button"
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+              className="p-3 rounded-xl bg-white border border-[#E0F0FF] text-slate-500 hover:bg-[#F0F7FF] hover:text-[#0077CC] disabled:opacity-40 transition-all shadow-sm cursor-pointer"
+              aria-label="Previous Page"
+            >
+              <FiChevronLeft className="w-4 h-4" />
+            </button>
+
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((number) => (
+              <button
+                key={number}
+                type="button"
+                onClick={() => handlePageChange(number)}
+                className={`w-10 h-10 rounded-xl text-xs font-bold transition-all cursor-pointer shadow-sm ${
+                  currentPage === number
+                    ? "bg-[#0077CC] text-white shadow-md shadow-blue-200/50"
+                    : "bg-white border border-[#E0F0FF] text-slate-500 hover:bg-[#F0F7FF] hover:text-[#0077CC]"
+                }`}
+                aria-label={`Go to page ${number}`}
+              >
+                {number}
+              </button>
+            ))}
+
+            <button
+              type="button"
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className="p-3 rounded-xl bg-white border border-[#E0F0FF] text-slate-500 hover:bg-[#F0F7FF] hover:text-[#0077CC] disabled:opacity-40 transition-all shadow-sm cursor-pointer"
+              aria-label="Next Page"
+            >
+              <FiChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+        </section>
       )}
 
+      {/* ========== BOTTOM CTA ========== */}
+      <div className="max-w-7xl mx-auto px-6 pb-16 pt-8">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="bg-gradient-to-r from-[#0077CC] to-[#00A3FF] text-white rounded-3xl p-10 sm:p-14 text-center space-y-6 shadow-2xl shadow-blue-500/20 relative overflow-hidden"
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.15),transparent_50%)] pointer-events-none" />
+          <motion.div
+            className="absolute -top-20 -right-20 w-[300px] h-[300px] bg-white/10 rounded-full blur-[80px]"
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute -bottom-20 -left-20 w-[300px] h-[300px] bg-white/10 rounded-full blur-[80px]"
+            animate={{ scale: [1, 1.15, 1] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <h3 className="text-2xl sm:text-4xl font-extrabold tracking-tight relative z-10">
+            Have a Unique Enterprise Challenge?
+          </h3>
+          <p className="text-blue-100 text-sm sm:text-base max-w-xl mx-auto relative z-10">
+            Let's architect a tailored solution that fits your specific operational landscape.
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-2 relative z-10">
+            <a
+              href="/contact"
+              className="px-8 py-3.5 rounded-full bg-white hover:bg-blue-50 text-[#0077CC] font-semibold text-sm transition-all shadow-lg flex items-center gap-2 group cursor-pointer hover:scale-105"
+            >
+              <span>Talk to our team</span>
+              <FiArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </a>
+          </div>
+        </motion.div>
+      </div>
     </div>
   );
 }
