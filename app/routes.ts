@@ -10,7 +10,5 @@ export default [
   route("product/slaice", "routes/product-slaice.tsx"),
   route("partner", "routes/partner.tsx"),
   route("casestudy", "routes/CaseStudy.tsx"),
-  route("faq/edms", "routes/faq-edms.tsx"),
-  route("faq/slaice", "routes/faq-slaice.tsx"),
   route("contact", "routes/contact.tsx"),
 ] satisfies RouteConfig;
