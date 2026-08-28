@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useParams, Link } from "react-router";
 import { FiArrowLeft, FiCheckCircle, FiShield, FiTrendingUp, FiArrowRight } from "react-icons/fi";
-import { useCasesData } from "./usecase";
+import { useCasesData } from "./usecase1";
 
 export default function SingleUseCasePage() {
   const { slug } = useParams();
