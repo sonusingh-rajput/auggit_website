@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { FiArrowRight } from "react-icons/fi";
-import { HiPlay, HiCheckCircle } from "react-icons/hi";
+import { HiPlay } from "react-icons/hi";
+import { FiUsers, FiShield, FiTrendingUp } from "react-icons/fi";
 
 export default function VideoSection() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -31,73 +31,89 @@ export default function VideoSection() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <span className="inline-block px-4 py-1.5 text-xs font-semibold tracking-[0.25em] uppercase text-[#2997D0] bg-blue-50 rounded-full border border-blue-200 shadow-sm">
-            Product Walkthrough
+            Inside Auggit
           </span>
           <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-slate-900">
-            SLAICE in <span className="bg-gradient-to-r from-[#2997D0] via-blue-600 to-indigo-600 bg-clip-text text-transparent">Action</span>
+            Building the Future of <span className="bg-gradient-to-r from-[#2997D0] via-blue-600 to-indigo-600 bg-clip-text text-transparent">Enterprise Compliance</span>
           </h2>
           <p className="text-slate-600 text-sm sm:text-base max-w-xl mx-auto">
-            See how SLAICE helps you extract the right SAP data, ensure compliance, and accelerate system provisioning.
+            Take a look inside Auggit's culture, vision, and the expert team empowering global digital workflows.
           </p>
         </div>
 
-        {/* Video Container Box */}
+        {/* Video Player Box */}
         <motion.div 
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative bg-[#021024] rounded-3xl overflow-hidden shadow-[0_25px_60px_rgba(41,151,208,0.2)] border border-blue-300/30"
+          className="relative bg-white/95 backdrop-blur-2xl rounded-3xl overflow-hidden shadow-[0_25px_60px_rgba(41,151,208,0.18)] border border-blue-200"
         >
           {!isPlaying ? (
-            <div className="relative w-full aspect-video flex items-center justify-center group cursor-pointer overflow-hidden" onClick={() => setIsPlaying(true)}>
-              {/* Thumbnail / Mockup View */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#021024] via-[#0a2540] to-[#021024] opacity-90" />
-              
-              <div className="absolute inset-0 flex items-center justify-between px-8 sm:px-16 pointer-events-none z-10">
-                <div className="space-y-4 max-w-md text-left">
-                  <h3 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-                    Smart Data Selection. <br />
-                    <span className="text-[#2997D0]">Powerful Results.</span>
-                  </h3>
-                  <div className="space-y-2 text-xs sm:text-sm text-slate-300">
-                    <div className="flex items-center gap-2"><HiCheckCircle className="text-emerald-400 w-4 h-4 shrink-0" /> Extract Only What You Need</div>
-                    <div className="flex items-center gap-2"><HiCheckCircle className="text-emerald-400 w-4 h-4 shrink-0" /> Ensure Residency & Compliance</div>
-                    <div className="flex items-center gap-2"><HiCheckCircle className="text-emerald-400 w-4 h-4 shrink-0" /> Accelerate Test Provisioning</div>
+            <div 
+              className="relative w-full aspect-video flex flex-col lg:flex-row items-center justify-between p-8 sm:p-14 group cursor-pointer overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-blue-100/40"
+              onClick={() => setIsPlaying(true)}
+            >
+              {/* Left Content Area (Auggit Official Company Culture) */}
+              <div className="space-y-6 max-w-md text-left z-10">
+                
+                {/* Auggit Logo Badge */}
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl font-bold tracking-tight text-[#0f4eac]">auggit</span>
+                  <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                </div>
+
+                <h3 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                  Innovation at Work. <br />
+                  <span className="bg-gradient-to-r from-[#2997D0] to-indigo-600 bg-clip-text text-transparent">Empowering Teams.</span>
+                </h3>
+
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                  Discover how our engineers and leaders collaborate to build transparent, secure, and audit-ready enterprise tools.
+                </p>
+
+                {/* 3 Bottom Feature Cards */}
+                <div className="grid grid-cols-3 gap-3 pt-2">
+                  <div className="bg-white/90 p-3 rounded-2xl border border-blue-100 shadow-sm flex flex-col items-center text-center space-y-1">
+                    <FiUsers className="w-5 h-5 text-[#2997D0]" />
+                    <span className="text-[11px] font-semibold text-slate-700 leading-tight">Expert Culture</span>
+                  </div>
+                  <div className="bg-white/90 p-3 rounded-2xl border border-blue-100 shadow-sm flex flex-col items-center text-center space-y-1">
+                    <FiShield className="w-5 h-5 text-[#2997D0]" />
+                    <span className="text-[11px] font-semibold text-slate-700 leading-tight">Core Values</span>
+                  </div>
+                  <div className="bg-white/90 p-3 rounded-2xl border border-blue-100 shadow-sm flex flex-col items-center text-center space-y-1">
+                    <FiTrendingUp className="w-5 h-5 text-[#2997D0]" />
+                    <span className="text-[11px] font-semibold text-slate-700 leading-tight">Global Vision</span>
                   </div>
                 </div>
 
-                {/* Play Button Overlay */}
-                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#2997D0] text-white flex items-center justify-center shadow-[0_0_30px_rgba(41,151,208,0.6)] group-hover:scale-110 transition-transform shrink-0">
-                  <HiPlay className="w-10 h-10 fill-current translate-x-0.5" />
+              </div>
+
+              {/* Right Side Video Preview Overlay */}
+              <div className="relative w-full lg:w-[55%] mt-8 lg:mt-0 rounded-2xl overflow-hidden border border-slate-200/80 shadow-lg bg-slate-900 aspect-video flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-900/60 to-indigo-950/80" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-20 h-20 rounded-full bg-white text-[#2997D0] flex items-center justify-center shadow-[0_10px_30px_rgba(0,0,0,0.3)] group-hover:scale-110 transition-transform">
+                    <HiPlay className="w-9 h-9 fill-current translate-x-0.5" />
+                  </div>
                 </div>
               </div>
+
             </div>
           ) : (
             <div className="relative w-full aspect-video">
               <iframe
                 className="w-full h-full"
                 src="https://www.youtube.com/embed/9QXRfMYpTqg?autoplay=1"
-                title="SLaiCE in Action | SAP Data Slicing Demo"
+                title="Auggit Company Official Video"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
             </div>
           )}
-        </motion.div>
 
-        {/* Action CTA Button */}
-        <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-          <a
-            href="https://youtu.be/9QXRfMYpTqg"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-[#2997D0] hover:bg-[#2585b7] text-white px-8 py-4 rounded-full font-semibold text-sm transition-all shadow-[0_4px_20px_rgba(41,151,208,0.3)] group"
-          >
-            <span>Watch Full Demo on YouTube</span>
-            <FiArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 text-white" />
-          </a>
-        </div>
+        </motion.div>
 
       </div>
     </section>

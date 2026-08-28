@@ -5,7 +5,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
-import Navbar from "~/components/common/Navbar3";
+import Navbar from "~/components/common/Navbar";
 import Footer from "~/components/common/Footer";
 import WhatsAppFloat from "~/components/common/WhatsAppFloat";
 import "./app.css";
