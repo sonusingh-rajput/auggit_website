@@ -58,45 +58,7 @@ export default function LeadershipSection() {
             <div className="w-48 h-48 sm:w-56 sm:h-56 rounded-2xl overflow-hidden shrink-0 border border-blue-100 bg-white shadow-sm flex items-center justify-center">
               <img 
                 src="/ceo_founder.png" 
-                alt="Sudeesh Kuttykrishnan - CEO" 
-                className="w-full h-full object-cover object-top"
-              />
-            </div>
-
-            <div className="space-y-4 text-left flex-1">
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <div>
-                  <h3 className="text-2xl sm:text-3xl font-bold text-slate-900">Sudeesh Kuttykrishnan</h3>
-                  <p className="text-[#2997D0] font-semibold text-sm">Chief Executive Officer (CEO)</p>
-                </div>
-                <a 
-                  href="https://www.linkedin.com/in/sudeeshk/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 bg-blue-50 text-[#2997D0] hover:bg-[#2997D0] hover:text-white px-3.5 py-2 rounded-xl text-xs font-semibold transition-all border border-blue-200"
-                >
-                  <FiLinkedin className="w-4 h-4" /> Connect
-                </a>
-              </div>
-
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                Sudeesh is a seasoned Technology Business Leader with 30 years of experience in software product management and enterprise leadership. Over 23 years at SAP, he led development teams, managed products across SAP’s portfolio, and drove adoption of SAP technologies across the APAC region, delivering solutions used in over 40 countries.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* CTO Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-white/90 backdrop-blur-xl rounded-3xl p-6 sm:p-10 border border-blue-100 shadow-[0_10px_30px_rgba(41,151,208,0.08)] hover:shadow-[0_15px_40px_rgba(41,151,208,0.15)] transition-all flex flex-col md:flex-row items-center gap-8"
-          >
-            <div className="w-48 h-48 sm:w-56 sm:h-56 rounded-2xl overflow-hidden shrink-0 border border-blue-100 bg-white shadow-sm flex items-center justify-center">
-              <img 
-                src="/cto.png" 
-                alt="Govind Gagoria - CTO" 
+                alt="Govind Gagoria - CEO" 
                 className="w-full h-full object-cover object-top"
               />
             </div>
@@ -105,7 +67,7 @@ export default function LeadershipSection() {
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div>
                   <h3 className="text-2xl sm:text-3xl font-bold text-slate-900">Govind Gagoria</h3>
-                  <p className="text-[#2997D0] font-semibold text-sm">Chief Technology Officer (CTO)</p>
+                  <p className="text-[#2997D0] font-semibold text-sm">Chief Executive Officer (CEO)</p>
                 </div>
                 <a 
                   href="https://www.linkedin.com/in/govindgagoria/" 
@@ -119,6 +81,43 @@ export default function LeadershipSection() {
 
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
                 Govind is an accomplished technical architect and engineering leader driving Auggit's core product ecosystem. With deep-rooted expertise in secure architecture, data localization, and enterprise scalability, he spearheads technical strategy to ensure robust performance across all platforms.
+              </p>
+            </div>
+          </motion.div>
+          {/* CTO Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="bg-white/90 backdrop-blur-xl rounded-3xl p-6 sm:p-10 border border-blue-100 shadow-[0_10px_30px_rgba(41,151,208,0.08)] hover:shadow-[0_15px_40px_rgba(41,151,208,0.15)] transition-all flex flex-col md:flex-row items-center gap-8"
+          >
+            <div className="w-48 h-48 sm:w-56 sm:h-56 rounded-2xl overflow-hidden shrink-0 border border-blue-100 bg-white shadow-sm flex items-center justify-center">
+              <img 
+                src="/cto.png" 
+                alt="Sudeesh Kuttykrishnan - CTO" 
+                className="w-full h-full object-cover object-top"
+              />
+            </div>
+
+            <div className="space-y-4 text-left flex-1">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-slate-900">Sudeesh Kuttykrishnan</h3>
+                  <p className="text-[#2997D0] font-semibold text-sm">Chief Technology Officer (CTO)</p>
+                </div>
+                <a 
+                  href="https://www.linkedin.com/in/sudeeshk/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 bg-blue-50 text-[#2997D0] hover:bg-[#2997D0] hover:text-white px-3.5 py-2 rounded-xl text-xs font-semibold transition-all border border-blue-200"
+                >
+                  <FiLinkedin className="w-4 h-4" /> Connect
+                </a>
+              </div>
+
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                Sudeesh is a seasoned Technology Business Leader with 30 years of experience in software product management and enterprise leadership. Over 23 years at SAP, he led development teams, managed products across SAP’s portfolio, and drove adoption of SAP technologies across the APAC region, delivering solutions used in over 40 countries.
               </p>
             </div>
           </motion.div>
